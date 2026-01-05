@@ -1,4 +1,4 @@
-import { CommonModule, DatePipe } from '@angular/common';
+import { CommonModule, } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Input,  } from '@angular/core';
 import { Output ,} from '@angular/core';
@@ -13,13 +13,14 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { FormBuilder } from '@angular/forms';
 import { FormControl } from '@angular/forms';
 import { Validators } from '@angular/forms';
+import { TimeAgoPipe } from '../../pipes/Date.pipe';
 
 @Component({
   selector: 'app-comments',
   standalone:true,
-  imports: [ CommonModule, DatePipe, MatListModule , MatIconModule,
+  imports: [ CommonModule, MatListModule , MatIconModule,
              MatFormFieldModule, MatButtonModule,    MatInputModule,
-             ReactiveFormsModule ],
+             ReactiveFormsModule,TimeAgoPipe ],
   templateUrl: './comments.html',
   styleUrl: './comments.scss',
 })
@@ -39,7 +40,7 @@ export class CommentsComponent implements OnInit {
     this.commentCtrl = this.formBuilder.control('', [Validators.required, Validators.minLength(1)]);
   }
 
-  
+
 
   onLeaveComment() {
     if (this.commentCtrl.invalid) {
